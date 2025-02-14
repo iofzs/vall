@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Experience</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Courier New', cursive;
+            background: #fde9f5;
+        }
+
+        .gallery-background {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-auto-rows: 50%;
+            gap: 8px;
+            z-index: -1;
+            opacity: 0.6;
+            filter: sepia(0.3);
+        }
+
+        .gallery-background img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .content {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .question-box {
+            background: rgba(255, 230, 230, 0.95);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(150, 50, 50, 0.3);
+            border: 2px solid #ff3366;
+        }
+
+        h1 {
+            color: #d42d5d;
+            font-size: 2.8em;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            margin-top: 1rem;
+        }
+
+        button {
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.3em;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        #yesBtn {
+            background: #4CAF50;
+            color: white;
+        }
+
+        #noBtn {
+            background: #f44336;
+            color: white;
+            position: relative;
+        }
+
+        .response-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            display: none;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+            z-index: 1000;
+        }
+
+        .response-image {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin: 1rem auto;
+        }
+
+        .music-player {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #7d2c6d;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    width: 400px;
+}
+
+.vintage-player {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.turntable {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    background: #2a2a2a;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.vinyl {
+    width: 75px;
+    height: 75px;
+    background: #000;
+    border-radius: 50%;
+    animation: spin 3s linear infinite;
+    position: absolute;
+    top: 2.5px;
+    left: 2.5px;
+}
+
+.tonearm {
+    width: 50px;
+    height: 10px;
+    background: #ccc;
+    transform: rotate(-20deg);
+    position: absolute;
+    top: 10px;
+    left: 30px;
+}
+
+.needle {
+    width: 5px;
+    height: 20px;
+    background: #f00;
+    position: absolute;
+    left: 45px;
+    top: -5px;
+}
+
+.music-info {
+    flex-grow: 1;
+}
+
+.music-title {
+    color: #fff;
+    margin: 0;
+}
+
+.music-artist {
+    color: #ccc;
+    font-size: 0.9em;
+    margin: 5px 0;
+}
+    </style>
+</head>
+<body>
+    <div class="gallery-background">
+        <img src="leon.jpg" alt="Heart 1">
+        <img src="f.jpg"Heart 2">
+        <img src="g.jpg" alt="Heart 3">
+        <img src="cf7255ae7344ce44e62f784fe160ca0d.jpg" alt="Heart 4">
+        <img src="cute-robot-cartoon-mascot-doodle-art-hand-drawn-concept-kawaii-icon-illustration-vector.jpg" alt="Heart 5">
+        <img src="s.jpg" alt="Heart 6">
+        <img src="n.jpeg" alt="Heart 7">
+        <img src="damonsalvatore2.jpg" alt="Heart 8">
+        <img src="h.jpg" alt="Heart 9">
+        <img src="an.jpg" alt="Heart 10">
+    </div>
+
+    <div class="content">
+        <div class="question-box">
+            <h1>Will You Be My Valentine? 💘</h1>
+            <div class="buttons">
+                <button id="yesBtn">YES</button>
+                <button id="noBtn">NO</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="response-container" id="response">
+        <img src="" class="response-image" alt="Response">
+        <h2 id="response-text"></h2>
+        <button onclick="closeResponse()">Close</button>
+    </div>
+
+    <div class="music-player">
+    <div class="vintage-player">
+        <div class="turntable">
+            <div class="vinyl"></div>
+            <div class="tonearm">
+                <div class="needle"></div>
+            </div>
+        </div>
+        <div class="music-info">
+            <h3 class="music-title">Love is a beautiful pain</h3>
+            <p class="music-artist">Cliff Edge</p>
+            <audio controls loop>
+                <source src="https://rr5---sn-hgn7rnll.googlevideo.com/videoplayback?expire=1739583253&ei=tZqvZ9-ZEo-I6dsPkYbbiQM&ip=176.6.136.104&id=o-AEH4wepTRwk2Ji7e6dvc61zxc24-TnrEg_h_aaMZQY3e&itag=251&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&rms=au%2Cau&bui=AUWDL3wMz2n1rkBm3wXlqMrFYp7acMbYYS04865CEUGzh60PsE_pXK2OB2FXPAsP-uON5HBzM65fPNps&spc=RjZbSfL8Cx_x22wMMMcRqmS_Xf9h1voDEIHQzPYUMzSI_Lb8Tg&vprv=1&svpuc=1&mime=audio%2Fwebm&ns=24fs7UVsyyQFVtfsJyw9vucQ&rqh=1&gir=yes&clen=4366960&dur=264.381&lmt=1710116271686583&keepalive=yes&fexp=24350590,24350737,24350827,24350961,24350977,24350978,24351063,24351082,24351132,24351146,24351183,51326932,51355912&c=WEB&sefc=1&txp=5532434&n=hyrrzpDW9fpP-A&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cbui%2Cspc%2Cvprv%2Csvpuc%2Cmime%2Cns%2Crqh%2Cgir%2Cclen%2Cdur%2Clmt&sig=AJfQdSswRAIgduf4DUySDVrZqfdJsE6QhNW1THHEis_7rXXlAGS_d0UCICeoVyJqgJnkc9kINoPovlMqA5ZDPiBek7MJySJSPJCU&pot=MnTyFPir8vul4PIo1YnhDbYAHLInLpbVevSz-2G8QhIAXKixjXbBblqtcNbnZtDYj0AiAc5MOIMzGtvvCtxkMK1YAoSSfWAQ9OK2RpScouRwW-JekoCXRdxdpb-cZc-FjZHqGSWZZd9rhkYHXnumPeSq3lZncA==&redirect_counter=1&rm=sn-4g5ed67s&rrc=104&req_id=b1039640368ca3ee&cms_redirect=yes&cmsv=e&ipbypass=yes&met=1739561661,&mh=8v&mip=95.218.229.11&mm=31&mn=sn-hgn7rnll&ms=au&mt=1739561346&mv=m&mvi=5&pl=20&lsparams=ipbypass,met,mh,mip,mm,mn,ms,mv,mvi,pl,rms&lsig=AGluJ3MwRAIgDVdPM-IiZiI7ky9j4pFAVrs3pH7MGVP40zpbVr6XZ0gCIEjgDe5NEBs5MYVid0l98ycGLpIzsmS_cYo7sajV_mjq" type="audio/mpeg">
+            </audio>
+        </div>
+    </div>
+</div>
+    <script>
+        function showResponse(isYes) {
+            const response = document.getElementById('response');
+            const image = response.querySelector('.response-image');
+            const text = document.getElementById('response-text');
+    
+            if(isYes) {
+                image.src = 'hap.webp';
+                text.innerHTML = "💖 الاجابه الوحيده الصح";
+                text.style.color = "#ff3366";
+            } else {
+                image.src = 'ang.webp';
+                text.innerHTML = "كلي زق";
+                text.style.color = "#4a4a4a";
+            }
+            response.style.display = 'block';
+        }
+    
+        function closeResponse() {
+            document.getElementById('response').style.display = 'none';
+        }
+    
+        // Event Listeners
+        document.getElementById('yesBtn').addEventListener('click', () => showResponse(true));
+        document.getElementById('noBtn').addEventListener('click', () => showResponse(false));
+    </script>
+</body>
+</html>
